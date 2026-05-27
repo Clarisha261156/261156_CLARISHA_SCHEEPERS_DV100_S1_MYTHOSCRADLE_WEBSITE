@@ -1,0 +1,881 @@
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    color: white; 
+    font-size: 16pt;
+}
+h1{ 
+    font-size: 40pt;
+    font-weight: bold;
+}
+h3{ 
+    font-size: 18pt
+}
+h4{ 
+    font-size: 16px
+}
+
+
+
+@font-face {
+    font-family: "TitleFont";
+    src: url(../assets/fonts/mythology_of_egypt/Mythology\ Of\ Egypt.otf);
+}
+.TitleFont{
+    font-family: "TitleFont";
+    font-size: 96px;
+    color: #e9ad1c;
+}
+
+ .metamorphous-heading{ 
+    font-family: 'metamorphous' ;
+     font-size: 40px;
+     color:#ffff;
+ }
+ .metamorphous-tagline{ 
+    font-family: 'metamorphous';
+     font-size: 24px;
+     color:#ffff ;
+ }
+
+
+.bg-image1{
+   background-image: url("../assets/img/homeHeader.png");
+    height:980px;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    position:relative;
+
+}
+
+
+.nav-container{
+    display:flex;
+    justify-content: center;
+}
+
+
+.nav{
+    width: 90%;
+    max-width: 2000px;
+    margin: 15px;
+
+
+
+    background-color:rgba(255,255,255,0.8);
+    border-radius: 25px;
+
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-direction: row;
+
+    
+    
+}
+
+
+.nav-links{
+    display:flex;
+    gap:40px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#8b8b8b;
+    font-size:16px;
+    
+}
+
+.nav-links a:hover{
+    color: #15d5f5 ; 
+    font-weight: 500;
+     transition: all 0.3s ease-in-out; 
+}
+
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 20px;
+
+  background: #f1f1f1;
+  padding: 10px 25px;
+  border-radius: 25px;
+}
+
+/* input grows but leaves space for cart */
+.search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+}
+
+/* cart container */
+.cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+}
+
+/* cart icon */
+.cart span:first-child {
+  font-size: 20px;
+}
+
+/* number badge */
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+
+  background: #00bcd4;
+  color: white;
+  font-size: 10px;
+
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+.logo{
+    height:100px;
+    width: 200px;
+    margin-left: 40px;
+}
+.hero-image-text{ 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    position: absolute;
+    right: 200px;
+    bottom: 150px;
+
+    
+}
+.material-symbols-outlined{
+    text-decoration: none;
+    color: #333;
+}
+.material-symbols-outlined a:hover{
+    color:#002d68;
+    font-weight: 600;
+}
+
+
+
+
+.section-2-background{
+    background-color: #002d68;
+    background-size: cover;
+    height: 980px;
+    display: flex;
+    justify-content: space-evenly;
+   
+}
+
+.carousel-inner{
+    top: 80px;
+    height: 800px;
+    width: 800px;
+}
+
+.carousel-control-next{
+    font-weight: 1000;
+}
+.section-2-text{
+    padding: 10px 50px;
+    margin: 10px;
+    height: 700px;
+    width: 700px;
+    margin-top: 200px;
+    flex-wrap: wrap;
+    font-size: 16pt;
+    
+}
+
+.cta-button{ 
+    margin:auto;
+    margin-top: 40px;
+    padding: 20px 80px;
+    border:none;
+    box-shadow: none;
+    align-items: center:
+
+    width: 400px;
+    height: 80px;
+
+    background: #15d5f5;
+
+    border-radius: 10px;
+    color: white;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 800;
+}
+
+.cta-button:hover{
+    background-color:#e9ad1c;
+    color: black
+     transition: all 0.3s ease-in-out; 
+}
+
+
+.section-3-background{ 
+    background-color: #ffff ;
+    height:max-content;
+    width: max-content;
+
+}
+ .container3{ 
+     display: flex;
+     justify-content:space-around;
+    
+    
+}
+.homeImg1{ 
+    padding: 100px 90px;
+    height: 800px;
+    width: ;
+    top: 200px;
+
+
+   display: flex;
+   flex-direction: row-reverse;
+   justify-content:
+   align-items: center;
+    
+}
+.section3Heading{
+    color: #30004f;
+    font-weight:600
+}
+.section3-text{ 
+    text-size-adjust: 16pt;
+    color: #8b8b8b;
+    display: block;
+    padding: 80px;
+    text-wrap-mode:left;
+}
+
+
+
+
+.section4-background{
+    background-color: #002d68;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 980px;
+}
+
+.section4Heading{
+    align-content: center;
+    justify-self: center;
+    text-align: center;
+    padding: 30px;
+    color: white;
+}
+.section4SmallHeading{
+    color: #f4b400;
+    font-size: 20px;
+    margin-bottom:10px;
+}
+
+.section4BigHeading{
+    font-size: 45px;
+    font-weight:700;
+}
+
+.card-body{
+    color:white;
+    text-align: center;
+    
+
+}
+.card-body h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 10px;
+
+}
+
+.card-body{
+    font-size: 15px;
+    color:  #c9d4e3;
+    line-height: 1.5;
+}
+
+.card{
+    width: 300px;
+    border-radius:25px;
+    background:transparent;
+    border:none;
+    text-align: center;
+
+
+}
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+     flex-wrap: wrap;
+}
+
+.cardContainer{
+    width:100%;
+    background-color:transparent;
+   
+}
+.card-img-top{
+    width:300px;
+    height:300px;
+    border-radius:20px;
+
+
+}
+.section4ButtonContainer{
+    display: flex;
+    justify-content:center;
+    margin-top:50px;
+    padding-bottom: 100px;
+    
+}
+
+
+.left-footer{
+    width:390px;
+    padding:30px;
+}
+
+.footer-logo{
+    width: 300px;
+    height: 100px;
+    padding:10px;
+}
+
+.footer-social-media-links{
+    width:90px;
+    height:100px;
+    padding:5pt;
+   
+
+    
+    
+}
+.footer-word-links{
+    color:gray;
+}
+.footer-word-links:hover{
+    color: #00bcd4;
+    font-weight: 100pt;
+    cursor: pointer;
+     transition: all 0.3s ease-in-out; 
+}
+
+.footer-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    padding:20px 90pt;
+}
+
+.left-footer{
+    margin-right: 180pt;
+   
+}
+
+.middle-footer{
+    padding:50px;
+    margin-right:150pt;
+}
+
+.right-footer{
+    padding:50px;
+}
+
+.bottom-footer-container{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding:60px;
+}
+
+
+
+
+
+.adoptHeader{
+    background-image:url("../assets/img/adoptHeader.png");
+   
+   height:350px;
+}
+
+
+   
+
+
+.nav-container2{
+    position:relative;
+
+    display: flex;
+    justify-content:center;
+    margin-top: 20px;
+
+}
+
+.adoptHeroContainer{
+     position: relative;
+  z-index: 2;
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  padding-left: 100px;
+}
+
+.adoptSubHeader{
+    background-color: #002d68;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    align-items: center;
+}
+
+.adoptHeroSubText{
+    text-align:center;
+    text-align: justify;
+    font-weight: 200;
+    font-size: 16pt;
+    margin: 20px 80px;
+}
+
+
+.filterContainer{
+    background-color:#f4b400;
+    padding: 40px 60px;
+
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+
+
+}
+
+.Items{
+   background-color: #fff;
+    padding: 20px ;
+
+    border: none;
+    border-radius: 20px;
+    color:#56038d;
+    width: 60px;
+
+}
+
+.sortByButton{
+    background-color: #fff;
+    padding: 20px ;
+
+    border: none;
+    border-radius: 20px;
+    color:#56038d;
+    width: 200px;
+    display:flex;
+    justify-content: left;
+}
+.verticalLine{
+    width: 2px;
+    height: 40px;
+    background-color:#696969;
+}
+
+
+
+
+
+
+
+
+
+
+.amountSelectButton{
+    
+    background-color:#002d68;
+    border: none;
+   
+    border-radius: 15px;
+    width: 100px;
+    height: 80px;
+    font-weight: 500;
+    color: white;
+    margin-right:30px;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.blueDragonContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    padding:80px;
+    padding-left:180px;
+    background-color: #fff;
+    margin-left:
+    align-items: center;
+}
+
+
+.dragonImageWrapper img {
+    width: 600px;
+    height:auto;
+    border-radius: 25px;
+}
+
+
+.dragonContent {
+    width:800px;
+    height:600px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dragonTitle {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color:#333
+}
+
+
+.priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.priceNumber {
+    font-size: 22px;
+    color: #8b8b8b;
+}
+
+.oldPriceNumber {
+    font-size: 22px;
+    color: #b0b0b0;
+}
+
+
+.starRating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stars {
+    width: 18px;
+}
+
+.smallVerticalLine {
+    width: 2px;
+    height: 25px;
+    background-color: #ccc;
+    margin: 0 10px;
+}
+
+.friendlyText {
+    color: #777;
+}
+
+
+.dragonDescription {
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+
+.actionRow {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.amountSelector {
+    display: flex;
+    align-items: center;
+    background-color: #0b2a5b;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.amountSelector button {
+    background: none;
+    border: none;
+    color: white;
+    padding: 20px 20px;
+    cursor: pointer;
+}
+
+.amountSelector span {
+    color: white;
+    padding: 0 10px;
+}
+
+
+.ctaButton {
+    background-color:#15d5f5;
+    color: white;
+    border: none;
+    padding: 20px 60px;
+    border-radius: 10px;
+   
+}
+.ctaButton:hover{
+     background-color:#e9ad1c;
+    color: black
+     cursor: pointer;
+     transition: all 0.3s ease-in-out; 
+}
+
+/* DETAILS GRID */
+.detailsGrid {
+    display: grid;
+    grid-template-columns: auto 20px 1fr;
+    row-gap: 20px;
+    column-gap: 15px;
+    color: #888;
+    font-size: 14px;
+    margin-top: 20px;
+    font-size: 14pt;
+}
+
+.horizontalRule{
+    background-color: #363636;
+    height: 4px;
+    width: 800px;
+}
+
+
+
+
+
+
+
+.bg-image3{
+    background-image: url("../assets/img/contactHeader.png");
+   
+  
+}
+
+.contactUsHeaderText{
+    display: flex;
+    align-items: center;
+    margin-left: 700px;
+  
+}
+
+.contactSection {
+    padding: 80px 0;
+    background: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contactContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.contactInfo {
+    flex: 1.3;
+}
+
+.smallHeading {
+    color: #50bfd7;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.contactInfo h2 {
+    font-size: 52px;
+    font-weight: 700;
+    color: #062f6c;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.socialMediaIcons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.socialMediaIcons img {
+    width: 70px;
+    display: block;
+}
+
+.contactInfo iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+    border-radius: 25px;
+    margin-top: 15px;
+}
+
+/* FORM CARD */
+.contactForm {
+    width: 420px;
+    background-image: url("../assets/img/formBackground.png"); /* your star bg */
+    background-size: cover;
+    background-position: center;
+    padding: 35px;
+    border-radius: 28px;
+    flex-shrink: 0;
+}
+
+.formHeading {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.formElement {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.formElement label {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.formElement input,
+.formElement textarea {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 18px;
+    font-size: 15px;
+    font-family: inherit;
+    box-sizing: border-box;
+    outline: none;
+    background: white;
+}
+
+.formElement textarea {
+    height: 110px;
+    resize: none;
+}
+
+.contactForm button {
+    background: #22c7ea;
+    color: white;
+    border: none;
+    padding: 14px 45px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* responsive */
+@media (max-width: 1000px) {
+    .contactContainer {
+        flex-direction: column;
+    }
+
+    .contactForm {
+        width: 100%;
+    }
+}
+
+
+
+
+.cartModalLogo{
+    height: 70px;
+    width: 200px;
+    display:flex;
+
+}
+
+
+span {cursor:pointer; }
+		.cartInputCounter{
+			margin:100px;
+		}
+		.minus, .plus{
+			width:20px;
+			height:20px;
+			background:#f2f2f2;
+			border-radius:4px;
+			padding:8px 5px 8px 5px;
+			border:px solid #ddd;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+		}
+		input{
+			height:34px;
+            width: 100px;
+            text-align: center;
+            font-size: 26px;
+			border:1px solid #ddd;
+			border-radius:4px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+			
+    
+
+.remove-btn{
+    background-color:#00bcd4;
+    border:none;
+    border-radius: 15px;
+    color: #fff;
+    width: 300px;
+    height: 80px;
+
+
+}
+
+.cart-item img{
+    width: 200px;
+    height:220px;
+    container-type: box;
+}
+
