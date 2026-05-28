@@ -411,13 +411,12 @@ h4{
 
 
 
-.adoptHeader{
-    background-image:url("../assets/img/adoptHeader.png");
-   
-   height:350px;
+
+.bg-image2{
+background-image: url(../assets/img/adoptHeader.png);
+height: 350px; 
+
 }
-
-
    
 
 
@@ -432,7 +431,7 @@ h4{
 
 .adoptHeroContainer{
      position: relative;
-  z-index: 2;
+    z-index: 2;
 
   height: 100%;
   display: flex;
@@ -440,10 +439,16 @@ h4{
 
   padding-left: 100px;
 }
-
+.adoptTitle{
+    font-size:96px ;
+    display:flex;
+   justify-content: center;
+   position: ;
+    
+}
 .adoptSubHeader{
     background-color: #002d68;
-    height: 400px;
+    height: 800px;
     display: flex;
     justify-content: center;
     flex-direction: column;
