@@ -633,6 +633,7 @@ height: 350px;
     background-color: #0b2a5b;
     border-radius: 10px;
     overflow: hidden;
+    width: fit-content;
 }
 
 .amountSelector button {

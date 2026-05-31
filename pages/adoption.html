@@ -111,11 +111,18 @@
     <input class="search-input" type="search" placeholder="Search">
 
     <!-- NEW: cart -->
-    <div class="cart">
-     <span class="material-symbols-outlined">shopping_cart</span>
-      <span class="cart-count">2</span>
-    </div>
+<div
+    class="cart"
+    data-bs-toggle="modal"
+    data-bs-target="#cartModal">
 
+    <span class="material-symbols-outlined">
+        shopping_cart
+    </span>
+
+    <span class="cart-count">0</span>
+
+</div>
   </div>
 </form>
         
@@ -216,7 +223,7 @@
         <button>+</button>
       </div>
 
-      <button class="ctaButton">Add to Cradle</button>
+      <button class="ctaButton" id="addAzuron">Add to Cradle</button>
      
     </div>
     

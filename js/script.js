@@ -1,149 +1,111 @@
+//.I have documented my thinking and logical process in this document using comments to show my understanding
 console.log("Hello World");
-//.setting the form as a variable
-document.addEventListener("DOMContentLoaded", function () {
-  const contactForm = document.forms["contact-form"];
-  //.preventing the page from reloading
-  contactForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    //.extracting the users information from the form by using the variable
-    let contactData = {
-      name: this["name"].value,
-      email: this["email"].value,
-      subject: this["subject"].value,
-      message: this["message"].value,
-    };
-    //.setting output and overwriting the html with $$ signs
-    let output = `
-      <p>
-	  		<h2> Dear 
-	  			<b><span>${contactData.name}</span></b>,thank you for reaching out!
-	   </p>
-	  	 </h2>
 
-      <p>We'll get back to your message as soon as possible.</p>
-      <br> 
 
-	  <p>
-	  	<h3> Message Overview:</h3>
-	  </p>
+//.Step 1: Empty Array for the cart
+let cart = [];
+console.log(cart);
 
-      <p><b>Email:</b> <span>${contactData.email}</span></p>
-	  
-      <p><b>Subject:</b> <span>${contactData.subject}</span></p>
 
-      <p><b>Message:</b> <span>${contactData.message}</span></p>
-    `;
 
-    document.querySelector(".outputContainer").innerHTML = output;
-    //.making sure the modal shows
-    let contactModal = new bootstrap.Modal(
-      document.getElementById("contactModal"),
-    );
+//.Step 2: User clicks "add to cradle"-> Creature gets added to the cart->console shows updated cart
+//.Creating the JS variable. This is telling JS to go find this button and store it as a variable 
 
-    contactModal.show();
-  });
-});
+const addAzuronButton = 
+document.getElementById("addAzuron");
 
-let cart = [
-  {
-    id: 1,
-    name: "Blue Dragon - Azuron",
-    price: 2500,
-    quantity: 1,
-    image: "/assets/img/adopt1.png",
-  },
-  {
-    id: 2,
-    name: "Kitsune - Yuki",
-    price: 4500,
-    quantity: 1,
-    image: "/assets/img/adopt2.png",
-  },
-  {
-    id: 3,
-    name: "Griffen - Aurelia",
-    price: 6500,
-    quantity: 1,
-    image: "/assets/img/adopt3.png",
-  },
-  {
-    id: 4,
-    name: "Water Wisp - Lumina",
-    price: 40000,
-    quantity: 1,
-    image: "/assets/img/adopt4.png",
-  },
-  {
-    id: 5,
-    name: "Pegasus - Starwind",
-    price: 5000,
-    quantity: 1,
-    image: "/assets/img/adopt5.png",
-  },
-  {
-    id: 6,
-    name: "Forest Spirit - Briar",
-    price: 3500,
-    quantity: 1,
-    image: "/assets/img/adopt6.png",
-  },
-];
 
-function renderCart() {
-  const cartItems = document.getElementById("cartItems");
-  const cartTotal = document.getElementById("cartTotal");
 
+//.Listen for clicks: testing with console log = why? = because before adding creatures to the cart I need to make sure that javascript can detect the button.
+
+addAzuronButton.addEventListener(
+  "click",
+  function() {
+    const existingCreature = 
+    cart.find(item => item.id === 1);
+
+//."find ()" is looking through the cart and checking if it can find a creature with the id = 1
+
+    if(existingCreature){
+      existingCreature.quantity++;
+    } //. This statement updates the QUANTITY instead of just duplicating the creature
+    else{
+      cart.push({
+      id: 1,
+      name: "Blue Dragon - Azuron",
+      price: 2500,
+      quantity: 1
+     });
+    }
+  
+
+  console.log(cart);
+  renderCart();
+  }
+);
+
+
+
+//. Creating my first render function
+
+//.finding the cartItems div in my modal
+//. render function loops through every creature and multiplies the price by the selected quantity 
+function renderCart () {
+  const cartItems = 
+  document.getElementById("cartItems");
+
+
+//.This clears anything that's already inside of the cart
   cartItems.innerHTML = "";
+
+
 
   let total = 0;
 
-  cart.forEach((item) => {
+  //.loops through every creature that's currently in the cart. So if the cart contains the creature , it shows the information in the following format. Overwriting HTML
+
+  cart.forEach(item => {
+
     total += item.price * item.quantity;
 
+
     cartItems.innerHTML += `
-      <div class="cart-item">
-        <img src="${item.image}" alt="${item.name}">
+     <div class="cart-item">
 
-        <div class="cart-info">
-          <h4>${item.name}</h4>
-          <p>R${item.price.toFixed(2)}</p>
-        </div>
+      <h3>${item.name}</h3>
 
-        <div class="cartInputCounter">
-          <button onclick="decreaseQuantity(${item.id})">-</button>
-          <input type="text" value="${item.quantity}" readonly>
-          <button onclick="increaseQuantity(${item.id})">+</button>
-        </div>
+      <p>
+      Price: R${item.price}
+      </p>
 
-        <button class="remove-btn" onclick="deleteItem(${item.id})">
-          Remove
-        </button>
-      </div>
+
+      <p>
+      Quantity: ${item.quantity}
+      </p>
+
+    </div>
     `;
   });
-
-  cartTotal.textContent = total.toFixed(2);
+//.Dynamic total calculation 
+  document.getElementById("cartTotal")
+  .textContent = total.toFixed(2)
 }
 
-function increaseQuantity(id) {
-  const item = cart.find((item) => item.id === id);
-  item.quantity++;
-  renderCart();
-}
 
-function decreaseQuantity(id) {
-  const item = cart.find((item) => item.id === id);
 
-  if (item.quantity > 1) {
-    item.quantity--;
-  }
 
-  renderCart();
-}
 
-function deleteItem(id) {
-  cart = cart.filter((item) => item.id !== id);
-  renderCart();
-}
 
-renderCart();
+
+
+
+
+
+
+
+
+
+
+
+
+
