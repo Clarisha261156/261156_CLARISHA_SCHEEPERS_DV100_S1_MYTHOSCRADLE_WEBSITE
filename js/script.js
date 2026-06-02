@@ -1,5 +1,52 @@
 //.I have documented my thinking and logical process in this document using comments to show my understanding
 console.log("Hello World");
+//.Quantity Logic 
+
+let azuronQuantity = 1;
+
+const azuronQuantityDisplay =
+document.getElementById("azuronQuantity");
+
+const azuronPlusButton =
+document.getElementById("azuronPlus");
+
+const azuronMinusButton =
+document.getElementById("azuronMinus");
+//.Plus Button
+azuronPlusButton.addEventListener(
+  "click",
+  function(){
+
+    azuronQuantity++;
+
+    azuronQuantityDisplay.textContent =
+    azuronQuantity;
+
+  }
+);
+//. Minus Button:
+azuronMinusButton.addEventListener(
+  "click",
+  function(){
+
+    if(azuronQuantity > 1){
+
+      azuronQuantity--;
+
+      azuronQuantityDisplay.textContent =
+      azuronQuantity;
+
+    }
+
+  }
+);
+
+
+
+
+
+
+
 
 
 //.Step 1: Empty Array for the cart
@@ -27,14 +74,14 @@ addAzuronButton.addEventListener(
 //."find ()" is looking through the cart and checking if it can find a creature with the id = 1
 
     if(existingCreature){
-      existingCreature.quantity++;
+      existingCreature.quantity += azuronQuantity;
     } //. This statement updates the QUANTITY instead of just duplicating the creature
     else{
       cart.push({
       id: 1,
       name: "Blue Dragon - Azuron",
       price: 2500,
-      quantity: 1
+      quantity: azuronQuantity
      });
     }
   
@@ -79,10 +126,26 @@ function renderCart () {
       </p>
 
 
-      <p>
-      Quantity: ${item.quantity}
-      </p>
+      <div class="cartInputCounter">
 
+      <button onclick="decreaseQuantity(${item.id})">
+      -
+      </button>
+
+      <span>
+        ${item.quantity}
+      </span>
+
+      <button onclick="increaseQuantity(${item.id})">
+        +
+      </button>
+
+      </div>
+
+
+      <button class="removeBtn" onclick="deleteItems(${item.id})">
+      Remove
+      </button>
     </div>
     `;
   });
@@ -91,12 +154,42 @@ function renderCart () {
   .textContent = total.toFixed(2)
 }
 
+//.Increase Input Counter function INSIDE OF THE MODAL
+function increaseQuantity(id){
+  
+  const item = cart.find(item => item.id === id);
+
+  item.quantity ++ ;
+
+  renderCart()
+};
+
+//.Decrease Input counter function INSIDE THE MODAL
+function decreaseQuantity(id){
+  const item = cart.find(item => item.id === id);
+
+  if(item.quantity > 1){
+    item.quantity -- ;
+  }
+  renderCart();
+};
+
+//.Delete items from the cart function
+function deleteItem(id){
+  cart = cart.filter(item => item.id !== id);
+  renderCart();
+}
 
 
 
+function deleteItem(id){
 
+  console.log("DELETE CLICKED", id);
 
+  cart = cart.filter(item => item.id !== id);
 
+  renderCart();
+}
 
 
 
