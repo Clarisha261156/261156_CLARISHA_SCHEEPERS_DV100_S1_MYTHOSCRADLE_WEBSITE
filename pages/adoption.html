@@ -73,7 +73,7 @@
 
       <div class="modal-header">
         <img src="/assets/img/logo.png" class="cartModalLogo" alt="Logo">
-        <h2>Your Adoption Cart:</h2>
+        <h2 class="cart-Title">Your Adoption Cart:</h2>
 
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
@@ -87,11 +87,11 @@
       <div class="modal-footer">
         <h3>Total: R<span id="cartTotal">0.00</span></h3>
 
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <button type="button" class="btn-secondary" data-bs-dismiss="modal">
           Continue Searching
         </button>
 
-        <a href="../index.html" class="btn btn-primary">
+        <a href="../index.html" class="btn-primary">
           Finish Adoption
         </a>
       </div>
@@ -121,7 +121,7 @@
         shopping_cart
     </span>
 
-    <span class="cart-count">0</span>
+    <span class="cart-count" id="cartCount">0</span>
 
 </div>
   </div>
@@ -300,12 +300,19 @@ She delights in playful tricks and quietly watching over her friends, her tails 
    
     <div class="actionRow">
       <div class="amountSelector" style="background-color: #f4b400;">
-        <button>-</button>
-        <span>1</span>
-        <button>+</button>
-      </div>
+        <button id="yukiMinus">-</button>
 
-      <button class="ctaButton">Add to Cradle</button>
+<span id="yukiQuantity">1</span>
+
+<button id="yukiPlus">+</button>
+
+<button
+    id="addYuki"
+    class="ctaButton">
+
+    Add to Cradle
+
+</button>
       <hr>
     </div>
 
@@ -373,13 +380,19 @@ Aurelia is a proud little griffin, courageous yet gentle. She loves climbing, ex
    
     <div class="actionRow">
       <div class="amountSelector">
-        <button>-</button>
-        <span>1</span>
-        <button>+</button>
-      </div>
+       <button id="aureliaMinus">-</button>
 
-      <button class="ctaButton">Add to Cradle</button>
-     
+<span id="aureliaQuantity">1</span>
+
+<button id="aureliaPlus">+</button>
+
+<button
+    id="addAurelia"
+    class="ctaButton">
+
+    Add to Cradle
+
+</button>
     </div>
     
 <hr class="horizontalRule">
@@ -443,12 +456,19 @@ Lumina drifts like a shimmer of moonlight, soft and gentle. Playful and curious,
    
     <div class="actionRow">
       <div class="amountSelector" style="background-color: #f4b400;">
-        <button>-</button>
-        <span>1</span>
-        <button>+</button>
-      </div>
+        <button id="luminaMinus">-</button>
 
-      <button class="ctaButton">Add to Cradle</button>
+<span id="luminaQuantity">1</span>
+
+<button id="luminaPlus">+</button>
+
+<button
+    id="addLumina"
+    class="ctaButton">
+
+    Add to Cradle
+
+</button>
       <hr>
     </div>
 
@@ -525,12 +545,19 @@ Starwind is a gentle, curious Pegasus foal with a playful spirit. He loves short
     <!-- BUTTONS -->
     <div class="actionRow">
       <div class="amountSelector">
-        <button>-</button>
-        <span>1</span>
-        <button>+</button>
-      </div>
+        <button id="starwindMinus">-</button>
 
-      <button class="ctaButton">Add to Cradle</button>
+<span id="starwindQuantity">1</span>
+
+<button id="starwindPlus">+</button>
+
+<button
+    id="addStarwind"
+    class="ctaButton">
+
+    Add to Cradle
+
+</button>
      
     </div>
     
@@ -597,12 +624,19 @@ Starwind is a gentle, curious Pegasus foal with a playful spirit. He loves short
 Briar is a tiny guardian of the woods, curious, gentle, and full of life. He loves leafy hideaways and quietly exploring gardens, always humming with a touch of magic. He enjoys collecting small natural treasures and bringing them to his caretakers as gifts, showing his playful personality.    <!-- BUTTONS -->
     <div class="actionRow">
       <div class="amountSelector" style="background-color: #f4b400;">
-        <button>-</button>
-        <span>1</span>
-        <button>+</button>
-      </div>
+       <button id="briarMinus">-</button>
 
-      <button class="ctaButton">Add to Cradle</button>
+<span id="briarQuantity">1</span>
+
+<button id="briarPlus">+</button>
+
+<button
+    id="addBriar"
+    class="ctaButton">
+
+    Add to Cradle
+
+</button>
       <hr>
     </div>
 

@@ -834,14 +834,74 @@ height: 350px;
 
 
 
-
+/*CART MODAL*/
 .cartModalLogo{
     height: 70px;
     width: 200px;
     display:flex;
 
 }
+.cart-Title{
+    font-family: 'Mythology of egypt';
+font-size: 60pt;
+margin-left: 250px;
+}
+.modal-footer{
+    background:#f8f8f8;
 
+    padding:30px;
+
+    border-top:2px solid #ddd;
+}
+.modal-footer h3{
+    font-size:32px;
+    display: flex;
+    align-items: end;
+    flex: row;
+    color:#0b2a5b;
+    
+
+    font-family:'Poppins';
+}
+
+
+.btn-primary{
+    background-color:#002d68;
+    
+    font-family: "Poppins";
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 10px;
+    cursor: pointer;
+    width: fit-content;
+    transition: all 0.4s ease;
+}
+
+.btn-primary:hover{
+    background-color:#15d5f5;
+
+    transform: translateY(-2px);
+}
+
+.btn-secondary{
+     background-color:#002d68;
+    
+    font-family: "Poppins";
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 10px;
+    cursor: pointer;
+    width: fit-content;
+    transition: all 0.4s ease;
+}
+
+.btn-secondary:hover{
+    background-color:#15d5f5;
+
+    transform: translateY(-2px);
+}
 
 span {cursor:pointer; }
 		.cartInputCounter{
@@ -849,42 +909,123 @@ span {cursor:pointer; }
 		}
 		.minus, .plus{
 			width:20px;
-			height:20px;
+			 height:20px;
 			background:#f2f2f2;
 			border-radius:4px;
-			padding:8px 5px 8px 5px;
+			  padding:8px 5px 8px 5px;
 			border:px solid #ddd;
-            display: inline-block;
+             display: inline-block;
             vertical-align: middle;
             text-align: center;
 		}
 		input{
-			height:34px;
+		 	height:34px;
             width: 100px;
             text-align: center;
-            font-size: 26px;
+             font-size: 26px;
 			border:1px solid #ddd;
-			border-radius:4px;
-            display: inline-block;
+			 border-radius:4px;
+             display: inline-block;
             vertical-align: middle;
         }
 			
     
 
 .remove-btn{
-    background-color:#00bcd4;
-    border:none;
-    border-radius: 15px;
-    color: #fff;
-    width: 300px;
-    height: 80px;
+    background-color:#002d68;
 
-
+    font-family: "Poppins";
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 10px;
+    cursor: pointer;
+    width: fit-content;
+    transition: all 0.4s ease;
 }
 
-.cart-item img{
-    width: 200px;
-    height:220px;
-    container-type: box;
+.remove-btn:hover{
+    background-color:#15d5f5;
+
+    transform: translateY(-2px);
+}
+
+
+
+.cart-item{
+    display:flex;
+    flex-direction: row;
+    gap:25px;
+text-size-adjust: 16pt;
+justify-content: center;
+    background:#f4b400;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+
+
+
+
+
+.cart-image{
+    width:400px;
+    height:400px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.cart-info{
+    flex:1;
+    font-size: 18pt;
+    display:flex;
+    flex-direction:column;
+padding: 20px;
+    gap:15px;
+}
+.cart-actions{
+    display:flex;
+    align-items:center;
+
+    gap:0px;
+}
+
+.cartInputCounter{
+    display:flex;
+    align-items:center;
+
+    background:#0b2a5b;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    width:fit-content;
+}
+
+.cartInputCounter button{
+    border:none;
+    background:none;
+
+    color:white;
+
+    padding:12px 18px;
+
+    font-size:18px;
+}
+
+.cartInputCounter span{
+    color:white;
+
+    min-width:40px;
+
+    text-align:center;
 }
 

@@ -49,9 +49,11 @@ azuronMinusButton.addEventListener(
 
 
 
-//.Step 1: Empty Array for the cart
-let cart = [];
-console.log(cart);
+//.Step 1: Empty Array for the cart, adding local storage
+let cart =
+JSON.parse(
+  localStorage.getItem("mythosCart")
+) || [];
 
 
 
@@ -81,13 +83,16 @@ addAzuronButton.addEventListener(
       id: 1,
       name: "Blue Dragon - Azuron",
       price: 2500,
-      quantity: azuronQuantity
+      quantity: azuronQuantity,
+      image: "../assets/img/adopt1.png"
      });
     }
   
 
   console.log(cart);
-  renderCart();
+
+    saveCart();
+    renderCart();
   }
 );
 
@@ -119,39 +124,80 @@ function renderCart () {
     cartItems.innerHTML += `
      <div class="cart-item">
 
-      <h3>${item.name}</h3>
+    <img
+      src="${item.image}"
+      class="cart-image">
 
-      <p>
-      Price: R${item.price}
-      </p>
+    <div class="cart-info">
 
+        <h2>${item.name}</h2>
 
-      <div class="cartInputCounter">
+        <p class="cart-price">
+          R${item.price.toFixed(2)}
+        </p>
 
-      <button onclick="decreaseQuantity(${item.id})">
-      -
-      </button>
+        <div class="cart-actions">
 
-      <span>
-        ${item.quantity}
-      </span>
+            <div class="cartInputCounter">
 
-      <button onclick="increaseQuantity(${item.id})">
-        +
-      </button>
+                <button onclick="decreaseQuantity(${item.id})">
+                  -
+                </button>
 
-      </div>
+                <span>
+                  ${item.quantity}
+                </span>
 
+                <button onclick="increaseQuantity(${item.id})">
+                  +
+                </button>
 
-      <button class="removeBtn" onclick="deleteItems(${item.id})">
-      Remove
-      </button>
+            </div>
+
+            <button
+              class="remove-btn"
+              onclick="deleteItem(${item.id})">
+
+              Remove from Cradle
+
+            </button>
+
+        </div>
+
     </div>
+
+</div>
     `;
   });
+
+
+
+
 //.Dynamic total calculation 
   document.getElementById("cartTotal")
   .textContent = total.toFixed(2)
+
+  updateCartCount();
+
+}
+
+
+
+
+//.Updating the cart count icon to show how many items are in the cart
+function updateCartCount(){
+
+  let totalItems = 0;
+
+  cart.forEach(item => {
+
+    totalItems += item.quantity;
+
+  });
+
+  document.getElementById("cartCount")
+  .textContent = totalItems;
+
 }
 
 //.Increase Input Counter function INSIDE OF THE MODAL
@@ -159,46 +205,55 @@ function increaseQuantity(id){
   
   const item = cart.find(item => item.id === id);
 
-  item.quantity ++ ;
+  item.quantity++;
 
-  renderCart()
-};
+  saveCart();
+  renderCart();
+}
 
 //.Decrease Input counter function INSIDE THE MODAL
 function decreaseQuantity(id){
   const item = cart.find(item => item.id === id);
 
   if(item.quantity > 1){
-    item.quantity -- ;
+    item.quantity--;
   }
+
+  saveCart();
   renderCart();
-};
+}
 
 //.Delete items from the cart function
-function deleteItem(id){
+function deleteItems(id){
   cart = cart.filter(item => item.id !== id);
   renderCart();
 }
 
 
 
-function deleteItem(id){
+function deleteItems(id){
 
   console.log("DELETE CLICKED", id);
 
   cart = cart.filter(item => item.id !== id);
 
+  saveCart();
   renderCart();
 }
 
 
 
+//.local storage to make sure the items in the cart doesnt dissapear when i refresh the page 
+//.save the cart into a functio
+function saveCart(){
+  localStorage.setItem("mythosCart", JSON.stringify(cart));
+}
+renderCart();
 
 
 
 
 
-
-
-
+//.now i have to do this for the rest of the creatures
+//.creating a creature database
 
