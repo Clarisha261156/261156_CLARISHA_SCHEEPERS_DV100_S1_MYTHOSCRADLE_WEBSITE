@@ -1,31 +1,22 @@
 console.log("JS Loaded");
 
+document.addEventListener("DOMContentLoaded", function () {
+  const contactForm = document.forms["contact-form"];
 
+  contactForm.addEventListener("submit", function (event) {
+    //.prevent refresh
+    event.preventDefault();
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
+    //.store user information
+    let contactData = {
+      name: this["name"].value,
+      email: this["email"].value,
+      subject: this["subject"].value,
+      message: this["message"].value,
+    };
 
-    const contactForm =
-    document.forms["contact-form"];
-
-    contactForm.addEventListener(
-      "submit",
-      function (event) {
-
-        //.prevent refresh
-        event.preventDefault();
-
-        //.store user information
-        let contactData = {
-          name: this["name"].value,
-          email: this["email"].value,
-          subject: this["subject"].value,
-          message: this["message"].value,
-        };
-
-        //. thank you message
-        let output = `
+    //. thank you message
+    let output = `
 
           <h2>
             Dear
@@ -66,292 +57,158 @@ document.addEventListener(
 
         `;
 
-        //.insert message into modal
-        document.querySelector(
-          ".outputContainer"
-        ).innerHTML = output;
+    //.insert message into modal
+    document.querySelector(".outputContainer").innerHTML = output;
 
-        //.create bootstrap modal
-        let contactModal =
-        new bootstrap.Modal(
-          document.getElementById(
-            "contactModal"
-          )
-        );
-
-        //.show modal
-        contactModal.show();
-
-        //.clear form after submission
-        contactForm.reset();
-
-      }
+    //.create bootstrap modal
+    let contactModal = new bootstrap.Modal(
+      document.getElementById("contactModal"),
     );
 
-  }
-);
+    //.show modal
+    contactModal.show();
 
+    //.clear form after submission
+    contactForm.reset();
+  });
+});
 
-let cart =
-JSON.parse(
-  localStorage.getItem("mythosCart")
-) || [];
+let cart = JSON.parse(localStorage.getItem("mythosCart")) || [];
 
+function addCreatureToCart(id, name, price, image) {
+  const existingCreature = cart.find((item) => item.id === id);
 
-
-
-function addCreatureToCart(
-  id,
-  name,
-  price,
-  image
-){
-
-  const existingCreature =
-  cart.find(
-    item => item.id === id
-  );
-
-  if(existingCreature){
-
+  if (existingCreature) {
     existingCreature.quantity++;
-
-  }
-  else{
-
+  } else {
     cart.push({
       id: id,
       name: name,
       price: price,
       quantity: 1,
-      image: image
+      image: image,
     });
-
   }
 
   saveCart();
   renderCart();
-
 }
-
-
 
 // AZURON
 
-
-document
-.getElementById("addAzuron")
-.addEventListener(
-  "click",
-  function(){
-
-    addCreatureToCart(
-      1,
-      "Blue Dragon - Azuron",
-      2500,
-      "../assets/img/adopt1.png"
-    );
-
-  }
-);
-
-
+document.getElementById("addAzuron").addEventListener("click", function () {
+  addCreatureToCart(
+    1,
+    "Blue Dragon - Azuron",
+    2500,
+    "../assets/img/adopt1.png",
+  );
+});
 
 // YUKI
 
-
-document
-.getElementById("addYuki")
-.addEventListener(
-  "click",
-  function(){
-
-    addCreatureToCart(
-      2,
-      "Kitsune - Yuki",
-      4500,
-      "../assets/img/adopt2.png"
-    );
-
-  }
-);
-
+document.getElementById("addYuki").addEventListener("click", function () {
+  addCreatureToCart(2, "Kitsune - Yuki", 4500, "../assets/img/adopt2.png");
+});
 
 // AURELIA
 
-
-document
-.getElementById("addAurelia")
-.addEventListener(
-  "click",
-  function(){
-
-    addCreatureToCart(3,"Griffin - Aurelia",6500, "../assets/img/adopt3.png"
-    );
-
-  }
-);
-
-
+document.getElementById("addAurelia").addEventListener("click", function () {
+  addCreatureToCart(3, "Griffin - Aurelia", 6500, "../assets/img/adopt3.png");
+});
 
 // LUMINA
-document.getElementById("addLumina")
-.addEventListener("click",function(){
-
-    addCreatureToCart(4,"Water Wisp - Lumina",40000,"../assets/img/adopt4.png"
-    );
-
-  }
-);
-
+document.getElementById("addLumina").addEventListener("click", function () {
+  addCreatureToCart(
+    4,
+    "Water Wisp - Lumina",
+    40000,
+    "../assets/img/adopt4.png",
+  );
+});
 
 // STARWIND
 
-document
-.getElementById("addStarwind")
-.addEventListener("click",function(){
-  addCreatureToCart( 5,"Pegasus - Starwind",5000,"../assets/img/adopt5.png"
-    );
-
-  }
-);
-
+document.getElementById("addStarwind").addEventListener("click", function () {
+  addCreatureToCart(5, "Pegasus - Starwind", 5000, "../assets/img/adopt5.png");
+});
 
 // BRIAR
 
-const briarButton =
-document.getElementById("addBriar");
+const briarButton = document.getElementById("addBriar");
 
-if(briarButton){
-
-  briarButton.addEventListener("click",
-    function(){
-addCreatureToCart( 6,"Forest Spirit - Briar",3500,"../assets/img/adopt6.png"
-      );
-
-    }
-  );
-
+if (briarButton) {
+  briarButton.addEventListener("click", function () {
+    addCreatureToCart(
+      6,
+      "Forest Spirit - Briar",
+      3500,
+      "../assets/img/adopt6.png",
+    );
+  });
 }
 
 // QUANTITY SELECTORS ON ADOPTION PAGE
 
-function setupQuantityCounter(
-  minusId,
-  quantityId,
-  plusId
-){
-
+function setupQuantityCounter(minusId, quantityId, plusId) {
   let quantity = 1;
 
-  const minusButton =
-  document.getElementById(minusId);
+  const minusButton = document.getElementById(minusId);
 
-  const plusButton =
-  document.getElementById(plusId);
+  const plusButton = document.getElementById(plusId);
 
-  const quantityDisplay =
-  document.getElementById(quantityId);
+  const quantityDisplay = document.getElementById(quantityId);
 
-  if(
-    !minusButton ||
-    !plusButton ||
-    !quantityDisplay
-  ){
+  if (!minusButton || !plusButton || !quantityDisplay) {
     return;
   }
 
-  plusButton.addEventListener(
-    "click",
-    function(){
+  plusButton.addEventListener("click", function () {
+    quantity++;
 
-      quantity++;
+    quantityDisplay.textContent = quantity;
+  });
 
-      quantityDisplay.textContent =
-      quantity;
+  minusButton.addEventListener("click", function () {
+    if (quantity > 1) {
+      quantity--;
 
+      quantityDisplay.textContent = quantity;
     }
-  );
-
-  minusButton.addEventListener(
-    "click",
-    function(){
-
-      if(quantity > 1){
-
-        quantity--;
-
-        quantityDisplay.textContent =
-        quantity;
-
-      }
-
-    }
-  );
-
+  });
 }
 
-
 // AZURON
-setupQuantityCounter(
-  "azuronMinus",
-  "azuronQuantity",
-  "azuronPlus"
-);
+setupQuantityCounter("azuronMinus", "azuronQuantity", "azuronPlus");
 
 // YUKI
-setupQuantityCounter(
-  "yukiMinus",
-  "yukiQuantity",
-  "yukiPlus"
-);
+setupQuantityCounter("yukiMinus", "yukiQuantity", "yukiPlus");
 
 // AURELIA
-setupQuantityCounter(
-  "aureliaMinus",
-  "aureliaQuantity",
-  "aureliaPlus"
-);
+setupQuantityCounter("aureliaMinus", "aureliaQuantity", "aureliaPlus");
 
 // LUMINA
-setupQuantityCounter(
-  "luminaMinus",
-  "luminaQuantity",
-  "luminaPlus"
-);
+setupQuantityCounter("luminaMinus", "luminaQuantity", "luminaPlus");
 
 // STARWIND
-setupQuantityCounter(
-  "starwindMinus",
-  "starwindQuantity",
-  "starwindPlus"
-);
+setupQuantityCounter("starwindMinus", "starwindQuantity", "starwindPlus");
 
 // BRIAR
-setupQuantityCounter(
-  "briarMinus",
-  "briarQuantity",
-  "briarPlus"
-);
+setupQuantityCounter("briarMinus", "briarQuantity", "briarPlus");
 
 // RENDER CART
 
-function renderCart(){
+function renderCart() {
+  const cartItems = document.getElementById("cartItems");
 
-  const cartItems =
-  document.getElementById("cartItems");
-
-  const cartTotal =
-  document.getElementById("cartTotal");
+  const cartTotal = document.getElementById("cartTotal");
 
   cartItems.innerHTML = "";
 
   let total = 0;
 
-  cart.forEach(item => {
-
-    total +=
-    item.price * item.quantity;
+  cart.forEach((item) => {
+    total += item.price * item.quantity;
 
     cartItems.innerHTML += `
 
@@ -406,91 +263,50 @@ function renderCart(){
     `;
   });
 
-  cartTotal.textContent =
-  total.toFixed(2);
+  cartTotal.textContent = total.toFixed(2);
 
   updateCartCount();
-
 }
 
-
-
-function increaseQuantity(id){
-
-  const item =
-  cart.find(
-    item => item.id === id
-  );
+function increaseQuantity(id) {
+  const item = cart.find((item) => item.id === id);
 
   item.quantity++;
 
   saveCart();
   renderCart();
-
 }
 
+function decreaseQuantity(id) {
+  const item = cart.find((item) => item.id === id);
 
-function decreaseQuantity(id){
-
-  const item =
-  cart.find(
-    item => item.id === id
-  );
-
-  if(item.quantity > 1){
-
+  if (item.quantity > 1) {
     item.quantity--;
-
   }
 
   saveCart();
   renderCart();
-
 }
 
-
-
-function deleteItem(id){
-
-  cart =
-  cart.filter(
-    item => item.id !== id
-  );
+function deleteItem(id) {
+  cart = cart.filter((item) => item.id !== id);
 
   saveCart();
   renderCart();
-
 }
 
-
-
-function updateCartCount(){
-
+function updateCartCount() {
   let totalItems = 0;
 
-  cart.forEach(item => {
-
+  cart.forEach((item) => {
     totalItems += item.quantity;
-
   });
 
-  document
-  .getElementById("cartCount")
-  .textContent =
-  totalItems;
-
+  document.getElementById("cartCount").textContent = totalItems;
 }
 
-
-
-function saveCart(){
-
-  localStorage.setItem(
-    "mythosCart",
-    JSON.stringify(cart)
-  );
-
+function saveCart() {
+  localStorage.setItem("mythosCart", JSON.stringify(cart));
 }
-
 
 renderCart();
