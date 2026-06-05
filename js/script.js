@@ -1,55 +1,97 @@
-//.I have documented my thinking and logical process in this document using comments to show my understanding
-console.log("Hello World");
-//.Quantity Logic 
+console.log("JS Loaded");
 
-let azuronQuantity = 1;
 
-const azuronQuantityDisplay =
-document.getElementById("azuronQuantity");
 
-const azuronPlusButton =
-document.getElementById("azuronPlus");
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
 
-const azuronMinusButton =
-document.getElementById("azuronMinus");
-//.Plus Button
-azuronPlusButton.addEventListener(
-  "click",
-  function(){
+    const contactForm =
+    document.forms["contact-form"];
 
-    azuronQuantity++;
+    contactForm.addEventListener(
+      "submit",
+      function (event) {
 
-    azuronQuantityDisplay.textContent =
-    azuronQuantity;
+        //.prevent refresh
+        event.preventDefault();
+
+        //.store user information
+        let contactData = {
+          name: this["name"].value,
+          email: this["email"].value,
+          subject: this["subject"].value,
+          message: this["message"].value,
+        };
+
+        //. thank you message
+        let output = `
+
+          <h2>
+            Dear
+            <b>${contactData.name}</b>,
+            thank you for reaching out!
+          </h2>
+
+          <p>
+            We have successfully received your message
+            and will get back to you as soon as possible.
+          </p>
+
+          <hr>
+
+          <h3>Message Overview</h3>
+
+          <p>
+            <b>Email:</b>
+            ${contactData.email}
+          </p>
+
+          <p>
+            <b>Subject:</b>
+            ${contactData.subject}
+          </p>
+
+          <p>
+            <b>Message:</b>
+            ${contactData.message}
+          </p>
+
+          <br>
+
+          <p>
+            Thank you for contacting
+            <b>Mythos Cradle</b>.
+          </p>
+
+        `;
+
+        //.insert message into modal
+        document.querySelector(
+          ".outputContainer"
+        ).innerHTML = output;
+
+        //.create bootstrap modal
+        let contactModal =
+        new bootstrap.Modal(
+          document.getElementById(
+            "contactModal"
+          )
+        );
+
+        //.show modal
+        contactModal.show();
+
+        //.clear form after submission
+        contactForm.reset();
+
+      }
+    );
 
   }
 );
-//. Minus Button:
-azuronMinusButton.addEventListener(
-  "click",
-  function(){
-
-    if(azuronQuantity > 1){
-
-      azuronQuantity--;
-
-      azuronQuantityDisplay.textContent =
-      azuronQuantity;
-
-    }
-
-  }
-);
 
 
-
-
-
-
-
-
-
-//.Step 1: Empty Array for the cart, adding local storage
 let cart =
 JSON.parse(
   localStorage.getItem("mythosCart")
@@ -57,125 +99,315 @@ JSON.parse(
 
 
 
-//.Step 2: User clicks "add to cradle"-> Creature gets added to the cart->console shows updated cart
-//.Creating the JS variable. This is telling JS to go find this button and store it as a variable 
 
-const addAzuronButton = 
-document.getElementById("addAzuron");
+function addCreatureToCart(
+  id,
+  name,
+  price,
+  image
+){
+
+  const existingCreature =
+  cart.find(
+    item => item.id === id
+  );
+
+  if(existingCreature){
+
+    existingCreature.quantity++;
+
+  }
+  else{
+
+    cart.push({
+      id: id,
+      name: name,
+      price: price,
+      quantity: 1,
+      image: image
+    });
+
+  }
+
+  saveCart();
+  renderCart();
+
+}
 
 
 
-//.Listen for clicks: testing with console log = why? = because before adding creatures to the cart I need to make sure that javascript can detect the button.
+// AZURON
 
-addAzuronButton.addEventListener(
+
+document
+.getElementById("addAzuron")
+.addEventListener(
   "click",
-  function() {
-    const existingCreature = 
-    cart.find(item => item.id === 1);
+  function(){
 
-//."find ()" is looking through the cart and checking if it can find a creature with the id = 1
+    addCreatureToCart(
+      1,
+      "Blue Dragon - Azuron",
+      2500,
+      "../assets/img/adopt1.png"
+    );
 
-    if(existingCreature){
-      existingCreature.quantity += azuronQuantity;
-    } //. This statement updates the QUANTITY instead of just duplicating the creature
-    else{
-      cart.push({
-      id: 1,
-      name: "Blue Dragon - Azuron",
-      price: 2500,
-      quantity: azuronQuantity,
-      image: "../assets/img/adopt1.png"
-     });
-    }
-  
-
-  console.log(cart);
-
-    saveCart();
-    renderCart();
   }
 );
 
 
 
-//. Creating my first render function
+// YUKI
 
-//.finding the cartItems div in my modal
-//. render function loops through every creature and multiplies the price by the selected quantity 
-function renderCart () {
-  const cartItems = 
+
+document
+.getElementById("addYuki")
+.addEventListener(
+  "click",
+  function(){
+
+    addCreatureToCart(
+      2,
+      "Kitsune - Yuki",
+      4500,
+      "../assets/img/adopt2.png"
+    );
+
+  }
+);
+
+
+// AURELIA
+
+
+document
+.getElementById("addAurelia")
+.addEventListener(
+  "click",
+  function(){
+
+    addCreatureToCart(3,"Griffin - Aurelia",6500, "../assets/img/adopt3.png"
+    );
+
+  }
+);
+
+
+
+// LUMINA
+document.getElementById("addLumina")
+.addEventListener("click",function(){
+
+    addCreatureToCart(4,"Water Wisp - Lumina",40000,"../assets/img/adopt4.png"
+    );
+
+  }
+);
+
+
+// STARWIND
+
+document
+.getElementById("addStarwind")
+.addEventListener("click",function(){
+  addCreatureToCart( 5,"Pegasus - Starwind",5000,"../assets/img/adopt5.png"
+    );
+
+  }
+);
+
+
+// BRIAR
+
+const briarButton =
+document.getElementById("addBriar");
+
+if(briarButton){
+
+  briarButton.addEventListener("click",
+    function(){
+addCreatureToCart( 6,"Forest Spirit - Briar",3500,"../assets/img/adopt6.png"
+      );
+
+    }
+  );
+
+}
+
+// QUANTITY SELECTORS ON ADOPTION PAGE
+
+function setupQuantityCounter(
+  minusId,
+  quantityId,
+  plusId
+){
+
+  let quantity = 1;
+
+  const minusButton =
+  document.getElementById(minusId);
+
+  const plusButton =
+  document.getElementById(plusId);
+
+  const quantityDisplay =
+  document.getElementById(quantityId);
+
+  if(
+    !minusButton ||
+    !plusButton ||
+    !quantityDisplay
+  ){
+    return;
+  }
+
+  plusButton.addEventListener(
+    "click",
+    function(){
+
+      quantity++;
+
+      quantityDisplay.textContent =
+      quantity;
+
+    }
+  );
+
+  minusButton.addEventListener(
+    "click",
+    function(){
+
+      if(quantity > 1){
+
+        quantity--;
+
+        quantityDisplay.textContent =
+        quantity;
+
+      }
+
+    }
+  );
+
+}
+
+
+// AZURON
+setupQuantityCounter(
+  "azuronMinus",
+  "azuronQuantity",
+  "azuronPlus"
+);
+
+// YUKI
+setupQuantityCounter(
+  "yukiMinus",
+  "yukiQuantity",
+  "yukiPlus"
+);
+
+// AURELIA
+setupQuantityCounter(
+  "aureliaMinus",
+  "aureliaQuantity",
+  "aureliaPlus"
+);
+
+// LUMINA
+setupQuantityCounter(
+  "luminaMinus",
+  "luminaQuantity",
+  "luminaPlus"
+);
+
+// STARWIND
+setupQuantityCounter(
+  "starwindMinus",
+  "starwindQuantity",
+  "starwindPlus"
+);
+
+// BRIAR
+setupQuantityCounter(
+  "briarMinus",
+  "briarQuantity",
+  "briarPlus"
+);
+
+// RENDER CART
+
+function renderCart(){
+
+  const cartItems =
   document.getElementById("cartItems");
 
+  const cartTotal =
+  document.getElementById("cartTotal");
 
-//.This clears anything that's already inside of the cart
   cartItems.innerHTML = "";
-
-
 
   let total = 0;
 
-  //.loops through every creature that's currently in the cart. So if the cart contains the creature , it shows the information in the following format. Overwriting HTML
-
   cart.forEach(item => {
 
-    total += item.price * item.quantity;
-
+    total +=
+    item.price * item.quantity;
 
     cartItems.innerHTML += `
-     <div class="cart-item">
 
-    <img
-      src="${item.image}"
-      class="cart-image">
+      <div class="cart-item">
 
-    <div class="cart-info">
+        <img
+          src="${item.image}"
+          class="cart-image">
 
-        <h2>${item.name}</h2>
+        <div class="cart-info">
 
-        <p class="cart-price">
-          R${item.price.toFixed(2)}
-        </p>
+          <h3>${item.name}</h3>
 
-        <div class="cart-actions">
+          <p>
+            R${item.price.toFixed(2)}
+          </p>
 
-            <div class="cartInputCounter">
-
-                <button onclick="decreaseQuantity(${item.id})">
-                  -
-                </button>
-
-                <span>
-                  ${item.quantity}
-                </span>
-
-                <button onclick="increaseQuantity(${item.id})">
-                  +
-                </button>
-
-            </div>
+          <div class="cartInputCounter">
 
             <button
-              class="remove-btn"
-              onclick="deleteItem(${item.id})">
+              onclick="decreaseQuantity(${item.id})">
 
-              Remove from Cradle
+              -
 
             </button>
 
+            <span>
+              ${item.quantity}
+            </span>
+
+            <button
+              onclick="increaseQuantity(${item.id})">
+
+              +
+
+            </button>
+
+          </div>
+
+          <button
+            class="remove-btn"
+            onclick="deleteItem(${item.id})">
+
+            Remove From Cradle
+
+          </button>
+
         </div>
 
-    </div>
+      </div>
 
-</div>
     `;
   });
 
-
-
-
-//.Dynamic total calculation 
-  document.getElementById("cartTotal")
-  .textContent = total.toFixed(2)
+  cartTotal.textContent =
+  total.toFixed(2);
 
   updateCartCount();
 
@@ -183,8 +415,55 @@ function renderCart () {
 
 
 
+function increaseQuantity(id){
 
-//.Updating the cart count icon to show how many items are in the cart
+  const item =
+  cart.find(
+    item => item.id === id
+  );
+
+  item.quantity++;
+
+  saveCart();
+  renderCart();
+
+}
+
+
+function decreaseQuantity(id){
+
+  const item =
+  cart.find(
+    item => item.id === id
+  );
+
+  if(item.quantity > 1){
+
+    item.quantity--;
+
+  }
+
+  saveCart();
+  renderCart();
+
+}
+
+
+
+function deleteItem(id){
+
+  cart =
+  cart.filter(
+    item => item.id !== id
+  );
+
+  saveCart();
+  renderCart();
+
+}
+
+
+
 function updateCartCount(){
 
   let totalItems = 0;
@@ -195,65 +474,23 @@ function updateCartCount(){
 
   });
 
-  document.getElementById("cartCount")
-  .textContent = totalItems;
+  document
+  .getElementById("cartCount")
+  .textContent =
+  totalItems;
 
 }
 
-//.Increase Input Counter function INSIDE OF THE MODAL
-function increaseQuantity(id){
-  
-  const item = cart.find(item => item.id === id);
-
-  item.quantity++;
-
-  saveCart();
-  renderCart();
-}
-
-//.Decrease Input counter function INSIDE THE MODAL
-function decreaseQuantity(id){
-  const item = cart.find(item => item.id === id);
-
-  if(item.quantity > 1){
-    item.quantity--;
-  }
-
-  saveCart();
-  renderCart();
-}
-
-//.Delete items from the cart function
-function deleteItems(id){
-  cart = cart.filter(item => item.id !== id);
-  renderCart();
-}
 
 
-
-function deleteItems(id){
-
-  console.log("DELETE CLICKED", id);
-
-  cart = cart.filter(item => item.id !== id);
-
-  saveCart();
-  renderCart();
-}
-
-
-
-//.local storage to make sure the items in the cart doesnt dissapear when i refresh the page 
-//.save the cart into a functio
 function saveCart(){
-  localStorage.setItem("mythosCart", JSON.stringify(cart));
+
+  localStorage.setItem(
+    "mythosCart",
+    JSON.stringify(cart)
+  );
+
 }
+
+
 renderCart();
-
-
-
-
-
-//.now i have to do this for the rest of the creatures
-//.creating a creature database
-
