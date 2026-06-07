@@ -3,17 +3,14 @@ console.log("JS Loaded");
 // CONTACT FORM + THANK YOU MESSAGE POPUP MODAL
 //.=============================================
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
   const contactForm = document.forms["contact-form"];
 
   contactForm.addEventListener("submit", function (event) {
-    //.prevent default = html refreshes page, didnt want page to refresh, bc js needed to process the date to display the name in the modal. if i didnt use this the modal wouldnt show 
     event.preventDefault();
 
     //.store user information//.
-    //.creating the object "contactdata", i used an object bc i have multipe pieces of related info that belongs together. instead of making 4 different var i store everything into one structured object. makes it easier to access later if i build the thank u message. The .value property retrieves the actual text the user entered. without the .value i wouldnt be accessing the TEXT THE USER ENTERED , but the element itself 
+    //.creating the object "contactdata", i used an object bc i have multipe pieces of related info that belongs together. instead of making 4 different var i store everything into one structured object. makes it easier to access later if i build the thank u message. The .value property retrieves the actual text the user entered. without the .value i wouldnt be accessing the TEXT THE USER ENTERED , but the element itself
     let contactData = {
       name: this["name"].value,
       email: this["email"].value,
@@ -79,9 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 //.==============================================
-//. ADDING THE CREATURES TO THE CART
+//. ADDING THE CREAURES TO THE CART
 //.==============================================
 let cart = JSON.parse(localStorage.getItem("mythosCart")) || [];
 
@@ -212,9 +208,9 @@ function renderCart() {
   const cartItems = document.getElementById("cartItems");
 
   const cartTotal = document.getElementById("cartTotal");
-//.==============================================
-//.RENDERING THE CART
-//.==============================================
+  //.==============================================
+  //.RENDERING THE CART
+  //.==============================================
   cartItems.innerHTML = "";
 
   let total = 0;
